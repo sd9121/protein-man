@@ -1,0 +1,116 @@
+{
+    "name": "drupal-composer/drupal-project",
+    "description": "Project template for Drupal 8 projects with composer",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "",
+            "role": ""
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+          "type": "package",
+          "package": {
+            "name": "antennaio/jquery-bar-rating",
+            "version": "1.2.2",
+            "type": "drupal-library",
+            "dist": {
+              "type": "zip",
+              "url": "https://github.com/antennaio/jquery-bar-rating/archive/v1.2.2.zip"
+            }
+          }
+        },
+        {
+          "type": "package",
+          "package": {
+            "name": "kenwheeler/slick",
+            "version": "v1.8.1",
+            "type": "drupal-library",
+            "source": {
+              "url": "https://github.com/kenwheeler/slick.git",
+              "type": "git",
+              "reference": "origin/master"
+            }
+          }
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "antennaio/jquery-bar-rating": "^1.2",
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6.5",
+        "drupal-composer/drupal-scaffold": "^2.5",
+        "drupal/admin_toolbar": "^1.27",
+        "drupal/bootstrap": "^3.19",
+        "drupal/console": "^1.0.2",
+        "drupal/core": "^8.7.0",
+        "drupal/kint": "^2.1",
+        "drupal/paragraphs": "^1.8",
+        "drupal/slick_entityreference": "^1.1",
+        "drupal/votingapi": "^3.0@beta",
+        "drupal/votingapi_widgets": "^1.0@alpha",
+        "drush/drush": "^9.0.0",
+        "kenwheeler/slick": "^1.8",
+        "vlucas/phpdotenv": "^2.4",
+        "webflo/drupal-finder": "^1.0.0",
+        "webmozart/path-util": "^2.3",
+        "zaporylie/composer-drupal-optimizations": "^1.0"
+    },
+    "require-dev": {
+        "webflo/drupal-core-require-dev": "^8.7.0"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ],
+        "files": ["load.environment.php"]
+    },
+    "scripts": {
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ]
+    },
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/Commands/{$name}": ["type:drupal-drush"]
+        },
+        "drupal-scaffold": {
+            "initial": {
+                ".editorconfig": "../.editorconfig",
+                ".gitattributes": "../.gitattributes"
+            }
+        }
+    }
+}

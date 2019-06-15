@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Contains protein_slider.module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Cache\Cache;
+
+/**
+ * Implements hook_theme().
+ */
+function protein_slider_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__protein_slider' => [
+      'template' => 'paragraph--protein-slider',
+      'base hook' => 'paragraph',
+    ],
+    'node__protein_blog__default' => [
+      'template' => 'node--protein-blog--default',
+      'base hook' => 'node',
+    ]
+  ];
+}
+function protein_slider_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__'.$content_type;
+    //$suggestions[] = 'html__'.$content_type;
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function protein_slider_entity_presave(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() == 'paragraph' && $entity->getType() == 'protein_slider') {
+    $tags = ['paragraph:' . $entity->id()];
+    Cache::invalidateTags($tags);
+  }
+}

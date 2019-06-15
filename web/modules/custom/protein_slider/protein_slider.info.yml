@@ -1,0 +1,14 @@
+name: 'Protien Components: Protien Entity Slider'
+description: 'Allows to create a slider between different user-selected entities.'
+type: module
+core: 8.x
+dependencies:
+  - drupal:entity_reference_revisions
+  - drupal:field
+  - drupal:image
+  - drupal:node
+  - drupal:options
+  - drupal:paragraphs
+  - drupal:slick
+  - drupal:slick_entityreference
+package: 'Protien Components'

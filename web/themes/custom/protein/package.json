@@ -1,0 +1,29 @@
+{
+  "name": "bill_theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "breakpoint": "^0.1.6",
+    "breakpoint-sass": "^2.7.1",
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-livereload": "^3.8.1",
+    "imagemin": "^5.2.2",
+    "jshint": "^2.9.4",
+    "livereload": "^0.6.2",
+    "node-normalize-scss": "^2.0.0",
+    "node-sass": "^4.5.2",
+    "normalize.css": "^7.0.0",
+    "susy": "^2.2.12"
+  }
+}

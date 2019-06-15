@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * The primary PHP file for the Protein theme.
+ *
+ * This file should only contain light helper functions and point to stubs in
+ * other files containing more complex functions.
+ */
+
+/**
+ * Implements template_preprocess_page_title().
+ */
+function protein_preprocess_page_title(&$variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node_type')) {
+    if($node->id()=='protein')
+    $variables['title'] = $node->label();
+  }
+}
